@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
+
+Route::get('/user/{id?}',function($id=null){
+	if(!is_null($id)){
+		return redirect()->route('profile');
+	}else{
+		return 'nono';
+	}
+});
+
+Route::get('/student/profile', function() {
+	return 'yes';
+})->name('profile');
