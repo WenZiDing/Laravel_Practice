@@ -15,14 +15,22 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::get('/user/{id?}',function($id=null){
-	if(!is_null($id)){
-		return redirect()->route('profile');
-	}else{
-		return 'nono';
-	}
+Route::get('/user/{id}',function($id){
+  return 'user_id:'.$id;
 });
 
-Route::get('/student/profile', function() {
-	return 'yes';
+//1號路由
+Route::get('/users/{id?}',function($id=null){
+  if(!is_null($id)){
+  	//如果有id就重導向至/student/profile
+    return redirect()->route('profile');
+  }else{
+    return '無使用者資料';
+  }
+});
+
+
+//2號路由
+Route::get('/student/profile',function(){
+  return '已查到使用者資料';
 })->name('profile');
